@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:c="http://java.sun.com/jstl/core">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form acptcharset="ISO-8859-1">
+				<h:messages errorStyle="color:red" layout="table"/>
+				<fieldset>
+					<legend>Consultar Animal</legend>
+					<h:outputText value="Digite o id do Animal: "/>
+					<h:inputText id="consulta" value="#{animalManagedBean.idAnimal}"/>
+					<h:commandButton value="Consultar"
+									action="#{animalManagedBean.consultaAnimal}" 
+									styleClass="botao">			
+					</h:commandButton>
+					<fieldset>
+						<legend>Animal</legend>
+						<h:panelGrid columns="2" id="consultaAnimal">					
+							<h:outputLabel value="Raça: " for="raca"/>
+							<h:inputText id="raca" value="#{animalManagedBean.animal.raca}"
+										 disabled="#{animalManagedBean.alterarCadastro eq false}"/>							
+							<h:outputLabel value="Idade: " for="idade"/>
+							<h:inputText id="idade" value="#{animalManagedBean.animal.idade}"
+										 disabled="#{animalManagedBean.alterarCadastro eq false}"/>
+							<h:outputLabel value="Peso: " for="peso"/>
+							<h:inputText id="peso" value="#{animalManagedBean.animal.peso}"
+										 disabled="#{animalManagedBean.alterarCadastro eq false}"/>
+							<h:outputLabel value="Porte: " for="porte"/>
+ 							<c:choose>
+								<c:when test="#{animalManagedBean.alterarCadastro eq false}"> 																	
+									<h:inputText id="porte" value="#{animalManagedBean.animal.porte}"
+												 disabled="#{true}"/>
+								</c:when>
+								<c:otherwise>
+									<h:selectOneMenu id="porteOp" value="#{animalManagedBean.animal.porte}">
+										<f:selectItem itemLabel="Selecione" intemValue="" noSelectionOption="true"/>
+										<f:selectItems value="#{animalManagedBean.porteEnum}" var="porte" itemValue="#{porte}" itemLabel="#{porte}" />							
+									</h:selectOneMenu>						
+								</c:otherwise>
+							</c:choose>			 
+						</h:panelGrid>
+					</fieldset>
+					<c:if test="#{animalManagedBean.animal.id ne null}">
+						<c:choose>
+							<c:when test="#{animalManagedBean.alterarCadastro eq false}">
+								<h:commandButton value="Alterar"
+												action="#{animalManagedBean.alterar}" 
+												styleClass="botao">			
+								</h:commandButton>
+							</c:when>
+							<c:otherwise>
+								<h:commandButton value="Salvar"
+												action="#{animalManagedBean.salvarAlteracao}" 
+												styleClass="botao">			
+								</h:commandButton>							
+							</c:otherwise>
+						</c:choose>
+						<h:commandButton value="Excluir"
+										action="#{animalManagedBean.deletar}" 
+										styleClass="botao">			
+						</h:commandButton>
+					</c:if>	
+				</fieldset>				
+				<br/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

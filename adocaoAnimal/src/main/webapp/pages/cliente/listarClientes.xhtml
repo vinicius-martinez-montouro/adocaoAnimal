@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form acptcharset="ISO-8859-1">
+				<h:dataTable value="#{clienteManagedBean.listarClientes}"
+							 var="cliente" 
+							 styleClass="tabela"
+							 headerClass="cabecalho">
+					<f:facet name="header">
+						<h:outputText value="Clientes" />
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{cliente.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="CPF" />
+						</f:facet>
+						<h:outputText value="#{cliente.cpf}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{cliente.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Telefone" />
+						</f:facet>
+						<h:outputText value="#{cliente.telefone}" />
+					</h:column>
+				</h:dataTable>
+			</h:form>	
+		</ui:define>
+	</ui:composition>
+</html>

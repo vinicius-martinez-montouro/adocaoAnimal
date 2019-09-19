@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:form>
+		<ul>
+			<li>
+				<h2>Cadastros</h2>
+				<ul>
+					<li><h:commandLink value="Cliente" action="/pages/cliente/cadastroCliente.xhtml"/></li>
+					<li><h:commandLink value="Animal" action="/pages/animal/cadastroAnimal.xhtml"/></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Listar</h2>
+				<ul>
+					<li><h:commandLink value="Cliente" action="/pages/cliente/listarClientes.xhtml"/></li>
+					<li><h:commandLink value="Animal" action="/pages/animal/listarAnimais.xhtml"/></li>				
+				</ul>
+			</li>
+			<li>
+				<h2>Consulta</h2>
+				<ul>
+					<li><h:commandLink value="Cliente" action="/pages/cliente/consultarCliente.xhtml"/></li>
+					<li><h:commandLink value="Animal" action="/pages/animal/consultarAnimal.xhtml"/></li>				
+				</ul>
+			</li>
+			<li>
+				<h2>
+					<h:commandLink value="Adotar" action="/pages/adotar/adotarAnimal.xhtml"/>
+				</h2>
+			</li>
+		</ul>
+	
+	
+	</h:form>
+
+</ui:composition>

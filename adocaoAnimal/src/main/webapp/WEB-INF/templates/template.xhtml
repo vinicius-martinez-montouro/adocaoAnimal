@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition>
+	<h:head>
+		<title>Adoção de Animais</title>
+		<link rel="stylesheet" href="#{request.contextPath}/resources/css/style.css" type="text/css"/>
+	</h:head>
+	<h:body>
+		<div id="cabecalho">
+			<h1>Gestão de Adoção de Animais</h1>
+			<p>Version 1.0</p>
+		</div>	
+		<div id="pagina">
+			<div id="conteudo">
+				<ui:insert name="conteudo">
+				</ui:insert>
+			</div>
+			<div id="menuLateral">
+				<ui:include src="menu.xhtml">
+				</ui:include>
+			</div>
+		</div>
+		<div style="clear:both">&nbsp;</div>
+		<div id="rodape">
+			<p>&copy;2019 All Rights Reserved &nbsp;&bull;&nbsp; Vinicius Martinez Montouro</p>
+		</div>
+	</h:body>
+</ui:composition>
+</html>

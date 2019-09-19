@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form acptcharset="ISO-8859-1">
+				<h:dataTable value="#{animalManagedBean.listarAnimais}"
+							 var="animal" 
+							 id="table"
+							 styleClass="tabela"
+							 headerClass="cabecalho"
+							 rows="10">
+					<f:facet name="header">
+						<h:outputText value="Animais" />
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID" />
+						</f:facet>
+						<h:outputText value="#{animal.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Raça" />
+						</f:facet>
+						<h:outputText value="#{animal.raca}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Idade" />
+						</f:facet>
+						<h:outputText value="#{animal.idade}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Peso" />
+						</f:facet>
+						<h:outputText value="#{animal.peso}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Porte" />
+						</f:facet>
+						<h:outputText value="#{animal.porte}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Adotado" />
+						</f:facet>
+						<h:outputText value="#{animal.cliente ne null?'Sim':'Não'}" />
+					</h:column>	
+				</h:dataTable>
+			</h:form>	
+		</ui:define>
+	</ui:composition>
+</html>

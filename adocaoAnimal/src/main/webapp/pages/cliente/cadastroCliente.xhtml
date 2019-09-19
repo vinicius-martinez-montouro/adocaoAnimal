@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form acptcharset="ISO-8859-1">
+				<h:messages errorStyle="color:red" layout="table"/>
+				<fieldset>
+					<legend>Cadastro de Cliente</legend>
+					
+					<h:panelGrid columns="2">
+					
+						<h:outputLabel value="Nome: " for="name"/>
+						<h:inputText id="nome" value="#{clienteManagedBean.cliente.nome}" size="400"
+									required="true" maxlength="50"
+									requiredMessage="O nome é obrigatório."/>	
+						
+						<h:outputLabel value="email: " for="email"/>
+						<h:inputText id="email" value="#{clienteManagedBean.cliente.email}" size="400"
+									required="true" maxlength="50"
+									requiredMessage="O e-mail é obrigatório."
+									validatorMessage="Informe um email válido">
+									<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />	
+						</h:inputText>												
+						<h:outputLabel value="Telefone: " for="telefone"/>
+						<h:inputText id="telefone" value="#{clienteManagedBean.cliente.telefone}" size="400"
+									required="true" maxlength="15"
+									requiredMessage="O telefone é obrigatório."
+									validatorMessage="Insira um número válido. Exemplo: (11) 99999-9999">
+									<f:validateRegex pattern="(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})"/>
+						</h:inputText>	
+						<h:outputLabel value="Cpf: " for="cpf"/>																	
+						<h:inputText id="cpf" value="#{clienteManagedBean.cliente.cpf}" size="400"
+									required="true" maxlength="14"
+									requiredMessage="O CPF é obrigatório."
+									mask="999.999.999-99"
+									validatorMessage="Informe um cpf válido no formato 999.999.999-99" >
+									<f:validateRegex pattern="\d{3}(\.\d{3}){2}-\d{2}" />									
+						</h:inputText>	
+					</h:panelGrid>
+				</fieldset>
+				
+				<br/>
+				<h:panelGrid columns="2">
+					<h:commandButton value="Cadastrar"
+									action="#{clienteManagedBean.inserir}" 
+									styleClass="botao"/>
+					<h:commandButton value="Cancelar" 
+									type="reset" 
+									styleClass="botao"/>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

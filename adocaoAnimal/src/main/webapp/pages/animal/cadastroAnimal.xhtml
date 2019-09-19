@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form acptcharset="ISO-8859-1">
+				<h:messages errorStyle="color:red" layout="table"/>
+				<fieldset>
+					<legend>Cadastro de Animal</legend>
+					
+					<h:panelGrid columns="2">
+					
+						<h:outputLabel value="Raça: " for="raca"/>
+						<h:inputText id="raca" value="#{animalManagedBean.animal.raca}" size="400"
+									required="true" maxlength="50"
+									requiredMessage="A raça é obrigatório."/>	
+						
+						<h:outputLabel value="Idade: " for="idade"/>
+						<h:inputText id="idade" value="#{animalManagedBean.animal.idade}" size="400"
+									required="true" maxlength="2"									
+									requiredMessage="A idade é obrigatório.">
+									<f:converter converterId="javax.faces.Integer" />
+						</h:inputText>									
+						<h:outputLabel value="Peso: " for="peso"/>
+						<h:inputText id="peso" value="#{animalManagedBean.animal.peso}" size="400"
+									required="true" maxlength="4"
+									requiredMessage="O peso é obrigatório.">
+									<f:convertNumber minFractionDigits="2"/>
+						</h:inputText>	
+						<h:outputLabel value="Porte: " for="porte"/>																	
+						<h:selectOneMenu id="porte" value="#{animalManagedBean.animal.porte}">
+							<f:selectItem itemLabel="Selecione" intemValue="" noSelectionOption="true"/>
+							<f:selectItems value="#{animalManagedBean.porteEnum}" var="porte" itemValue="#{porte}" itemLabel="#{porte}" />							
+						</h:selectOneMenu>	
+					</h:panelGrid>
+				</fieldset>
+				
+				<br/>
+				<h:panelGrid columns="2">
+					<h:commandButton value="Cadastrar"
+									action="#{animalManagedBean.inserir}" 
+									styleClass="botao"/>
+					<h:commandButton value="Cancelar" 
+									type="reset" 
+									styleClass="botao"/>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

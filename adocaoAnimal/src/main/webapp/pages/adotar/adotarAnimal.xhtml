@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:c="http://java.sun.com/jstl/core">
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form acptcharset="ISO-8859-1">
+				<h:messages errorStyle="color:red" layout="table"/>
+				<fieldset>
+					<legend>Adotar Animal</legend>
+					<h:panelGrid columns="2">
+						<h:outputText value="Digite o id do Animal: "/>
+						<h:inputText value="#{adotarAnimalManagedBean.idAnimal}"
+									 required="true"
+									 requiredMessage="O ID é obrigatório."/>
+						<h:outputText value="Digite o cpf do Cliente: " />
+						<h:inputText value="#{adotarAnimalManagedBean.cpfCliente}"
+									 required="true" maxlength="14"
+						 			 requiredMessage="O CPF é obrigatório."
+									 mask="999.999.999-99"
+									 validatorMessage="Informe um cpf válido no formato 999.999.999-99">
+							<f:validateRegex pattern="\d{3}(\.\d{3}){2}-\d{2}" />	
+						</h:inputText>
+						<h:commandButton value="Adotar"
+										actionListener="#{adotarAnimalManagedBean.adotar}" 
+										styleClass="botao">			
+						</h:commandButton>
+					</h:panelGrid>
+					<c:if test="#{adotarAnimalManagedBean.adocaRealizada}">
+						<h2>Adoção realizada com Sucesso</h2>
+					</c:if>
+				</fieldset>
+				
+				<br/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
